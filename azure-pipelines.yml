@@ -7,7 +7,7 @@ trigger:
 - main
 
 pool:
-  vmImage: prakash-agent-pool
+  name: prakash-agent-pool
 
 steps:
 - script: echo Hello, world!
