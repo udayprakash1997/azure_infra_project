@@ -22,8 +22,6 @@ variables:
   value: foodalert
 - name: TerraformBackend.key
   value: terraform-foodalert.tfstate
-- name: WorkingDir
-  value: 'Terraform/Atlas/HSDev'
   
 
 # Go through this variable group to change the behaviour of terraform modules
@@ -40,7 +38,7 @@ stages:
     - template: '../../ATLAS/YAMLTemplate/terraformInit.yml'
       parameters:
         subscription: $(serviceconnection)
-        workingDir: '$(System.DefaultWorkingDirectory)/Terraform/Atlas/HSDev'
+        workingDir: '$(System.DefaultWorkingDirectory)'
         backendType: azurerm
         backendAzureRmResourceGroupName: '$(TerraformBackend.ResourceGroup)'
         backendAzureRmStorageAccountName: '$(TerraformBackend.StorageAccount)'
