@@ -9,11 +9,41 @@ trigger:
 pool:
   name: prakash-agent-pool
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+variables:
+- name: serviceconnection
+  value: foodalert-prakash
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+# Provide information for terraform's backend
+- name: TerraformBackend.ResourceGroup
+  value: NetworkWatcherRG
+- name: TerraformBackend.StorageAccount
+  value: foodalertstorageaccount
+- name: TerraformBackend.ContainerName
+  value: foodalert
+- name: TerraformBackend.key
+  value: terraform-foodalert.tfstate
+- name: WorkingDir
+  value: 'Terraform/Atlas/HSDev'
+  
+
+# Go through this variable group to change the behaviour of terraform modules
+- group: 'terraformControl - HSDev'
+
+
+stages:
+- stage: 'Init'
+  displayName: "Terraform Plan & Validation"
+  jobs:
+  - job:
+    displayName: Init
+    steps:
+    - template: '../../ATLAS/YAMLTemplate/terraformInit.yml'
+      parameters:
+        subscription: $(serviceconnection)
+        workingDir: '$(System.DefaultWorkingDirectory)/Terraform/Atlas/HSDev'
+        backendType: azurerm
+        backendAzureRmResourceGroupName: '$(TerraformBackend.ResourceGroup)'
+        backendAzureRmStorageAccountName: '$(TerraformBackend.StorageAccount)'
+        backendAzureRmContainerName: '$(TerraformBackend.ContainerName)'
+        backendAzureRmKey: '$(TerraformBackend.key)'
+    - script: ls -ltr
