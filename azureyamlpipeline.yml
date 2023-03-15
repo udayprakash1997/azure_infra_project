@@ -24,9 +24,6 @@ variables:
   value: terraform-foodalert.tfstate
   
 
-# Go through this variable group to change the behaviour of terraform modules
-- group: 'terraformControl - HSDev'
-
 
 stages:
 - stage: 'Init'
