@@ -1,7 +1,3 @@
-resource "azurerm_resource_group" "rgname" {
-  name     = "foodalertresourecegroup1430"
-  location = "japanwest"
-}
 module "webapp" {
   source = "../Module/"
 
