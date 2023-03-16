@@ -1,8 +1,12 @@
+resource "azurerm_resource_group" "rgname" {
+  name     = "foodalertresourecegroup232"
+  location = "East Us"
+}
 module "webapp" {
   source = "../Module/"
 
-  rg_name          = "foodalertresourecegroup232"
-  rg_location        = "East Us"
+  rg_name          = azurerm_resource_group.rgname.name
+  rg_location        = azurerm_resource_group.rgname.location
   asp_name     =  "appserviceplanfoodalertdev"
   as_name             = "appservicefoodalertdev"
   #env                 = var.r_env
@@ -26,8 +30,8 @@ module "webapp" {
   module "webapp1" {
   source = "../Module/"
 
-  rg_name          = "foodalertresourecegroup23245"
-  rg_location        = "East Us"
+  rg_name          = azurerm_resource_group.rgname.name
+  rg_location        = azurerm_resource_group.rgname.name
   asp_name     =  "appserviceplanfoodalertqa"
   as_name             = "appservicefoodalertqa"
     
@@ -36,8 +40,8 @@ module "webapp" {
   module "app" {
   source = "../Module/"
 
-  rg_name          = "foodalertresourecegroup23245"
-  rg_location        = "East Us"
+  rg_name          = azurerm_resource_group.rgname.name
+  rg_location        = azurerm_resource_group.rgname.name
   asp_name     =  "appserviceplanfoodalertqa"
   as_name             = "appservicefoodalertuat"
     
