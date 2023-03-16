@@ -21,9 +21,9 @@ variables:
 - name: TerraformBackend.ContainerName
   value: foodalert
 - name: TerraformBackend.key
-  value: terraform-foodalert.tfstate
+  value: terraform-foodalert23.tfstate
 - name: WorkingDir
-  value: 'ashok'
+  value: 'foodalert'
 stages:
 - stage: 'Init'
   displayName: "Terraform Plan & Validation"
@@ -34,7 +34,7 @@ stages:
     - template: 'terraformInit.yml'
       parameters:
         subscription: $(serviceconnection)
-        workingDir: '$(System.DefaultWorkingDirectory)/ashok'
+        workingDir: '$(System.DefaultWorkingDirectory)/foodalert'
         backendType: azurerm
         backendAzureRmResourceGroupName: '$(TerraformBackend.ResourceGroup)'
         backendAzureRmStorageAccountName: '$(TerraformBackend.StorageAccount)'
