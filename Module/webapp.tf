@@ -10,8 +10,8 @@ resource "azurerm_app_service_plan" "aspname" {
   reserved            = true
 
   sku {
-    tier = "Standard"
-    size = "S1"
+    tier = "Basic"
+    size = "B1"
   }
 }
 resource "azurerm_app_service" "asname" {
