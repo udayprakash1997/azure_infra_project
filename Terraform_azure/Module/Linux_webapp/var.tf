@@ -1,8 +1,8 @@
 variable "rg_name"{
 type = string
-default="foodalerrt-rg"
+default=" "
 }
 variable "rg_location" {
     type = String
-    default = "eastus"
+    default = " "
 }
