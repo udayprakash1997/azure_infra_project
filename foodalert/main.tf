@@ -27,4 +27,12 @@ module "webapp" {
   #}
 
 }
+  module "webapp" {
+  source = "../Module/"
+
+  rg_name          = azurerm_resource_group.rgname.name
+  rg_location      = azurerm_resource_group.rgname.location
+  asp_name     =  "appserviceplanfoodalerttest1000"
+  as_name             = "appservicefoodalerttest10001"
+  }
  
