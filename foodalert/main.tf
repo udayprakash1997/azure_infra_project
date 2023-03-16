@@ -1,5 +1,5 @@
 module "webapp" {
-  source = "../Modules/"
+  source = "../Module/"
 
   rg_name          = "foodalertresourecegroup232"
   rg_location        = "East Us"
