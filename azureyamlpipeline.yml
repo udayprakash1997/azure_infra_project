@@ -21,7 +21,7 @@ variables:
 - name: TerraformBackend.ContainerName
   value: foodalert
 - name: TerraformBackend.key
-  value: terraform-foodalertlatest.tfstate
+  value: terraform-foodalertlatest2.tfstate
 - name: WorkingDir
   value: 'foodalert'
 stages:
