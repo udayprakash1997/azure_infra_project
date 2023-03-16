@@ -22,8 +22,6 @@ variables:
   value: foodalert
 - name: TerraformBackend.key
   value: terraform-foodalert.tfstate
-- name: WorkingDir
-  value: 'Terraform_azure/Module/Linux_webapp'
 
 
 stages:
@@ -36,7 +34,7 @@ stages:
     - template: 'terraformInit.yml'
       parameters:
         subscription: $(serviceconnection)
-        workingDir: '$(System.DefaultWorkingDirectory)/Terraform_azure/Module/Linux_webapp'
+        workingDir: '$(System.DefaultWorkingDirectory)'
         backendType: azurerm
         backendAzureRmResourceGroupName: '$(TerraformBackend.ResourceGroup)'
         backendAzureRmStorageAccountName: '$(TerraformBackend.StorageAccount)'
