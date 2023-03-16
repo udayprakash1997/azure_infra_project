@@ -7,8 +7,8 @@ module "webapp" {
 
   rg_name          = azurerm_resource_group.rgname.name
   rg_location      = azurerm_resource_group.rgname.location
-  asp_name     =  "appserviceplanfoodalerttest1"
-  as_name             = "appservicefoodalerttest1"
+  asp_name     =  "appserviceplanfoodalerttest1000"
+  as_name             = "appservicefoodalerttest1000"
   #env                 = var.r_env
   #asp_name            = "${var.r_prefix}-asp1-${var.r_env}-${random_integer.ri.result}"
   #tier                = "Standard"
