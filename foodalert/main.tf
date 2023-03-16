@@ -20,7 +20,7 @@ module "webapp" {
     #AtlasSTSOrigin = local.identity_url
     #EnableCorsFor  = local.cors
     #WizardApp      = local.wizard_url
-  }
+  #}
 
 }
 
