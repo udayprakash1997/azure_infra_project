@@ -43,19 +43,28 @@ steps:
     #commandOptions: '-var-file="terraform.tfvars" -input=false -out deployment.tfplan'
     allowTelemetryCollection: false
     displayName: 'Terraform Plan'
-
-- task: ArchiveFiles@2
+    
+- task: TerraformCLI@0
   inputs:
-    rootFolderOrFile: '$(Build.SourcesDirectory)/Terraform'
-    includeRootFolder: false
-    archiveType: 'tar'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).tgz'
-    replaceExistingArchive: false
-    displayName: 'Zip Artifacts'
+    command: 'apply'
+    workingDirectory: '${{parameters.workingDir}}'
+    environmentServiceName: '${{parameters.subscription}}'
+    #commandOptions: '-var-file="terraform.tfvars" -input=false -out deployment.tfplan'
+    allowTelemetryCollection: false
+    displayName: 'Terraform Apply'
 
-- task: PublishPipelineArtifact@1
-  inputs:
-    targetPath: '$(Build.ArtifactStagingDirectory)'
-    artifact: '$(Build.BuildId)-tfplan'
-    publishLocation: 'pipeline'
-    displayName: 'Publish Artifacts'
+#- task: ArchiveFiles@2
+ # inputs:
+  #  rootFolderOrFile: '$(Build.SourcesDirectory)/Terraform'
+   # includeRootFolder: false
+    #archiveType: 'tar'
+    #archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).tgz'
+    #replaceExistingArchive: false
+    #displayName: 'Zip Artifacts'
+
+#- task: PublishPipelineArtifact@1
+ # inputs:
+  #  targetPath: '$(Build.ArtifactStagingDirectory)'
+   # artifact: '$(Build.BuildId)-tfplan'
+   # publishLocation: 'pipeline'
+    #displayName: 'Publish Artifacts'
