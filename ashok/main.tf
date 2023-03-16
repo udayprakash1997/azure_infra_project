@@ -1,6 +1,6 @@
  module "rg" {
   # Terraform Cloud PMR use
-  source = "../Terraform_azure/Module/Linux_webapp"
+  source = "azure_infra_project/Terraform_azure/Module/Linux_webapp"
   version = "~>1.3.3"
 
   rg_name     = "foodalert-resourcegroup"
