@@ -4,7 +4,7 @@ default=" "
 }
 
 variable "rg_location" {
-    type = String
+    type = string
     default = " "
 }
 variable "asp_name" {
