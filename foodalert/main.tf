@@ -23,5 +23,14 @@ module "webapp" {
   #}
 
 }
+  module "webapp1" {
+  source = "../Module/"
+
+  rg_name          = "foodalertresourecegroup232"
+  rg_location        = "East Us"
+  asp_name     =  "appserviceplanfoodalertdev"
+  as_name             = "appservicefoodalertqa"
+    
+  }
 
 
