@@ -6,7 +6,7 @@ module "webapp" {
   source = "../Module/"
 
   rg_name          = azurerm_resource_group.rgname.name
-  rg_location        = azurerm_resource_group.rgname.location
+  rg_location        = "East Us"
   asp_name     =  "appserviceplanfoodalerttest1"
   as_name             = "appservicefoodalerttest1"
   #env                 = var.r_env
