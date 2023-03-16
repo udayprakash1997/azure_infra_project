@@ -27,7 +27,7 @@ module "webapp" {
   #}
 
 }
-  module "webapp" {
+  module "webapp1" {
   source = "../Module/"
 
   rg_name          = azurerm_resource_group.rgname.name
