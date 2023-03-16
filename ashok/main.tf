@@ -1,4 +1,4 @@
 resource "azurerm_resource_group" "rg" {
-  rg_name     = "foodalert-resourcegroup"
+  name     = "foodalertresourcegroup123"
   location = "East US"
 }
