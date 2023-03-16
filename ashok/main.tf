@@ -14,11 +14,11 @@ resource "app_service_plan" "example" {
     size = "S1"
   }
 }
-resource "azurerm_app_service" "example" {
-  name                = "exampleapp1"
-  resource_group_name = azurerm_resource_group.example.name
-  location            = azurerm_resource_group.example.location
-  service_plan_id     = app_service_plan.example.id
+#resource "azurerm_app_service" "example" #{
+  #name                = "exampleapp1"
+  #resource_group_name = azurerm_resource_group.example.name
+  #location            = azurerm_resource_group.example.location
+  #service_plan_id     = app_service_plan.example.id
 
-  site_config {}
-}
+  #site_config {}
+#}
