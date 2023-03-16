@@ -40,7 +40,7 @@ steps:
     command: 'plan'
     workingDirectory: '${{parameters.workingDir}}'
     environmentServiceName: '${{parameters.subscription}}'
-    commandOptions: '-var-file="terraform.tfvars" -input=false -out deployment.tfplan'
+    #commandOptions: '-var-file="terraform.tfvars" -input=false -out deployment.tfplan'
     allowTelemetryCollection: false
     displayName: 'Terraform Plan'
 
