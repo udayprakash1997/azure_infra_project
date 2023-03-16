@@ -3,7 +3,7 @@ resource "azurerm_resource_group" "example" {
   location = "East US"
 }
 resource "azurerm_app_service_plan" "example" {
-  name                = "api-appserviceplan-pro"
+  name                = "ashokappserviceplan12"
   location            = azurerm_resource_group.example.location
   resource_group_name = azurerm_resource_group.example.name
   kind                = "Linux"
