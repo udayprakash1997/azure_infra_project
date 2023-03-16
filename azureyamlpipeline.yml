@@ -22,7 +22,8 @@ variables:
   value: foodalert
 - name: TerraformBackend.key
   value: terraform-foodalert.tfstate
-  
+- name: WorkingDir
+  value: 'Terraform_azure/Module/Linux_webapp'
 
 
 stages:
