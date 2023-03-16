@@ -35,7 +35,7 @@ stages:
     - template: 'terraformInit.yml'
       parameters:
         subscription: $(serviceconnection)
-        workingDir: '$(System.DefaultWorkingDirectory)/Terraform_azure/Module/Linux_webapp/'
+        workingDir: '$(System.DefaultWorkingDirectory)/Terraform_azure/Module/Linux_webapp'
         backendType: azurerm
         backendAzureRmResourceGroupName: '$(TerraformBackend.ResourceGroup)'
         backendAzureRmStorageAccountName: '$(TerraformBackend.StorageAccount)'
