@@ -2,10 +2,15 @@ resource "azurerm_resource_group" "example" {
   name     = "foodalertresourcegroup12"
   location = "East US"
 }
-resource "azurerm_app_service_plan" "appserviceplan" {
-  name                = "webapp-asp-foodalert-linux"
+resource "azurerm_app_service_plan" "example" {
+  name                = "api-appserviceplan-pro"
   location            = azurerm_resource_group.example.location
   resource_group_name = azurerm_resource_group.example.name
-  os_type             = "Linux"
-  sku_name            = "B1"
+  kind                = "Linux"
+  reserved            = true
+
+  sku {
+    tier = "Standard"
+    size = "S1"
+  }
 }
