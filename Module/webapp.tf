@@ -1,7 +1,7 @@
 resource "azurerm_app_service_plan" "aspname" {
   name                = var.asp_name
-  location            = var.rg_name
-  resource_group_name = var.rg_location
+  location            = var.rg_location
+  resource_group_name = var.rg_name
   kind                = "Linux"
   reserved            = true
 
@@ -12,8 +12,8 @@ resource "azurerm_app_service_plan" "aspname" {
 }
 resource "azurerm_app_service" "asname" {
   name                = var.as_name
-  location            = var.rg_name
-  resource_group_name = var.rg_location
+  location            = var.rg_location
+  resource_group_name = var.rg_name
   app_service_plan_id = azurerm_app_service_plan.aspname.id
 
   site_config {
