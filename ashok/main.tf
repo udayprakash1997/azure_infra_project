@@ -1,8 +1,4 @@
- module "rg" {
-  # Terraform Cloud PMR use
-  source = "azure_infra_project/Terraform_azure/Module/Linux_webapp"
-  version = "~>1.3.3"
-
-  rg_name     = "foodalert-resourcegroup"
-  rg_location      = "East US"
+resource "azurerm_resource_group" "rg" {
+  rg_name     = var.rg_name
+  location = var.rg_location
 }
