@@ -1,7 +1,3 @@
-resource "azurerm_resource_group" "rgname" {
-  name     = var.rg_name
-  location = var.rg_location
-}
 resource "azurerm_app_service_plan" "aspname" {
   name                = var.asp_name
   location            = azurerm_resource_group.rgname.location
