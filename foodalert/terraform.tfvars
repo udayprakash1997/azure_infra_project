@@ -1,0 +1,10 @@
+
+r_create_asp       = "__create_asp__"
+r_create_asp_linux = "__create_asp_linux__"
+r_existing_asp     = "__existing_asp__"
+r_existing_asp_rg  = "__existing_asp_rg__"
+r_existing_aspl    = "__existing_aspl__"
+r_existing_aspl_rg = "__existing_aspl_rg__"
+r_location         = "__location__"
+r_prefix           = "__prefix__"
+r_env              = "__env__"

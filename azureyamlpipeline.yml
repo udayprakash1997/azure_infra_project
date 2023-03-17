@@ -9,6 +9,7 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
+
 variables:
 - name: serviceconnection
   value: foodalert-prakash
@@ -21,7 +22,7 @@ variables:
 - name: TerraformBackend.ContainerName
   value: foodalert
 - name: TerraformBackend.key
-  value: terraform-foodalertlatest2.tfstate
+  value: terraform-foodalertlatestashokvadde.tfstate
 - name: WorkingDir
   value: 'foodalert'
 stages:
