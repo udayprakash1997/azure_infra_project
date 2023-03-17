@@ -1,43 +1,39 @@
-resource "azurerm_resource_group" "rgname" {
-  name     = "foodalert8988512359"
-  location = "East Us"
+resource "random_integer" "ri" {
+  min = 10000
+  max = 99999
 }
-resource "azurerm_app_service_plan" "aspname" {
-  name                = "foodalertappserviceplan1"
-  location            = azurerm_resource_group.rgname.location
-  resource_group_name = azurerm_resource_group.rgname.name
-  kind                = "Linux"
-  reserved            = true
 
-  sku {
-    tier = "Basic"
-    size = "B1"
+
+# Create a Resource Group
+resource "azurerm_resource_group" "rg" {
+  name     = "${var.r_prefix}rg-${var.r_env}-${random_integer.ri.result}"
+  location = var.r_location
+}
+
+
+module "webapp" {
+  source = "../Module/"
+
+  create_asp          = var.r_create_asp
+  existing_asp        = var.r_existing_asp
+  existing_asp_rg     = var.r_existing_asp_rg
+  prefix              = var.r_prefix
+  env                 = var.r_env
+  asp_name            = "${var.r_prefix}-asp1-${var.r_env}-${random_integer.ri.result}"
+  tier                = "Standard"
+  size                = "S1"
+  webapplist          = ["identity", "webapp"]
+  resource_group_name = azurerm_resource_group.rg.name
+  location            = azurerm_resource_group.rg.location
+  scm_ip_restriction  = ["31.121.101.144/28", "31.121.101.128/29", "202.89.106.0/23"]
+  app_settings = {
+    Angular2URL    = local.v2_url
+    AppURL         = local.webapp_url
+    AtlasAPI       = local.api_url
+    AtlasSTSOrigin = local.identity_url
+    EnableCorsFor  = local.cors
+    WizardApp      = local.wizard_url
   }
+
 }
-#module "webapp" #{
- # source = "../Module/"
 
-  #rg_name          = azurerm_resource_group.rgname.name
-  #rg_location      = azurerm_resource_group.rgname.location
-  #asp_name     =  azurerm_app_service_plan.asp.id
-  #as_name             = "appservicefoodalerttestashok"
-  #env                 = var.r_env
-  #asp_name            = "${var.r_prefix}-asp1-${var.r_env}-${random_integer.ri.result}"
-  #tier                = "Standard"
-  #size                = "S1"
-  #webapplist          = ["identity", "webapp"]
-  #resource_group_name = azurerm_resource_group.rg.name
-  #location            = azurerm_resource_group.rg.location
-  #scm_ip_restriction  = ["31.121.101.144/28", "31.121.101.128/29", "202.89.106.0/23"]
-  #app_settings = {
-   # Angular2URL    = local.v2_url
-    #AppURL         = local.webapp_url
-    #AtlasAPI       = local.api_url
-    #AtlasSTSOrigin = local.identity_url
-    #EnableCorsFor  = local.cors
-    #WizardApp      = local.wizard_url
-  #}
-
-#}
-
- 
