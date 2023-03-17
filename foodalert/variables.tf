@@ -1,4 +1,4 @@
 variable "asp_name" {
   type = string
-  default = "appserviceplanfoodalerttest1000"
+  default = "appserviceplanfoodalerttest100011"
 }
