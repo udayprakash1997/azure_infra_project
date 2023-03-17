@@ -1,18 +1,26 @@
 resource "azurerm_resource_group" "rgname" {
-  name     = "foodalert898851235"
+  name     = "foodalert8988512359"
   location = "East Us"
 }
-data "azurerm_app_service_plan" "example" {
-  existasp_name                = var.asp_name
+resource "azurerm_app_service_plan" "aspname" {
+  name                = "foodalertappserviceplan1"
+  location            = var.rg_location
   resource_group_name = azurerm_resource_group.rgname.name
+  kind                = "Linux"
+  reserved            = true
+
+  sku {
+    tier = "Basic"
+    size = "B1"
+  }
 }
 module "webapp" {
   source = "../Module/"
 
   rg_name          = azurerm_resource_group.rgname.name
   rg_location      = azurerm_resource_group.rgname.location
-  asp_name     =  var.asp_name
-  as_name             = "appservicefoodalerttest10001"
+  asp_name     =  azurerm_app_service_plan.asp.name
+  as_name             = "appservicefoodalerttestashok"
   #env                 = var.r_env
   #asp_name            = "${var.r_prefix}-asp1-${var.r_env}-${random_integer.ri.result}"
   #tier                = "Standard"
@@ -31,12 +39,5 @@ module "webapp" {
   #}
 
 }
-  module "webapp1" {
-  source = "../Module/"
 
-  rg_name          = azurerm_resource_group.rgname.name
-  rg_location      = azurerm_resource_group.rgname.location
-  asp_name     =  azurerm_app_service_plan.example.existasp_name
-  as_name             = "appservicefoodalerttest1004501"
-  }
  
