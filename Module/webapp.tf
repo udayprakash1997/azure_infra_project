@@ -10,6 +10,14 @@ resource "azurerm_app_service_plan" "aspname" {
     size = "B1"
   }
 }
+data "azurerm_app_service_plan" "example" {
+  existasp_name                = azurerm_app_service_plan.aspname.name
+  resource_group_name = var.rg_name
+}
+
+#output "app_service_plan_id" {
+ # value = data.azurerm_app_service_plan.example.id
+#}
 resource "azurerm_app_service" "asname" {
   name                = var.as_name
   location            = var.rg_location
