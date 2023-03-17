@@ -41,15 +41,15 @@ resource "azurerm_app_service" "this" {
    ftps_state          = "FtpsOnly"
    http2_enabled       = true
    linux_fx_version    = "DOCKER | ${var.image_name}"
-     dynamic "scm_ip_restriction" {
-      for_each = toset(var.scm_ip_restriction)
-      content {
-        ip_address = scm_ip_restriction.key
-      }
-    }
+     #dynamic "scm_ip_restriction" #{
+      #for_each = toset(var.scm_ip_restriction)
+      #content #{
+       # ip_address = scm_ip_restriction.key
+      #}
+    #}
   }
 
-  app_settings = var.app_settings
+  #app_settings = var.app_settings
 
 
 }
