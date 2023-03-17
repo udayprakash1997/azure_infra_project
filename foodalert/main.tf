@@ -4,7 +4,7 @@ resource "azurerm_resource_group" "rgname" {
 }
 resource "azurerm_app_service_plan" "aspname" {
   name                = "foodalertappserviceplan1"
-  location            = var.rg_location
+  location            = azurerm_resource_group.rgname.location
   resource_group_name = azurerm_resource_group.rgname.name
   kind                = "Linux"
   reserved            = true
