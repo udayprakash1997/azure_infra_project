@@ -32,7 +32,7 @@ module "webapp" {
 
   rg_name          = azurerm_resource_group.rgname.name
   rg_location      = azurerm_resource_group.rgname.location
-  asp_name     =  "appserviceplanfoodalerttest1000"
+  aspname     =  var.existasp_name
   as_name             = "appservicefoodalerttest10001"
   }
  
