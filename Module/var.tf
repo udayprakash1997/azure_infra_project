@@ -7,6 +7,8 @@ variable "webapplist" {
 
 variable "image_name" {
   description = "Provide name for the docker image"
+  type = string
+  default = "ubuntu"
   
 }
 
