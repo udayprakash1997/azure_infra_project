@@ -1,5 +1,5 @@
 resource "azurerm_resource_group" "rgname" {
-  name     = "foodalert898855"
+  name     = "foodalert898851235"
   location = "East Us"
 }
 data "azurerm_app_service_plan" "example" {
@@ -12,7 +12,7 @@ module "webapp" {
   rg_name          = azurerm_resource_group.rgname.name
   rg_location      = azurerm_resource_group.rgname.location
   asp_name     =  var.asp_name
-  as_name             = "appservicefoodalerttest1000"
+  as_name             = "appservicefoodalerttest10001"
   #env                 = var.r_env
   #asp_name            = "${var.r_prefix}-asp1-${var.r_env}-${random_integer.ri.result}"
   #tier                = "Standard"
