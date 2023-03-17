@@ -14,3 +14,7 @@ variable "as_name" {
   type = string
   default=" "
 }
+variable "existasp_name" {
+  type = string
+  default = " "
+}
