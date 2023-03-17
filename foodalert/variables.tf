@@ -1,19 +1,19 @@
 variable "r_prefix" {
   type        = string
   description = "Prefix for the application names"
-  default     = "atlas"
+  default     = "foodalert"
 }
 
 variable "r_env" {
   type        = string
   description = "Set the environment name like prod, dev, qa, uat or DR"
-  default     = "ssoqa"
+  default     = "foodalertqa"
 }
 
 variable "r_location" {
   type = string
   description = "You should provide an Azure location for your resources"
-  default = "northeurope"
+  default = "Uk South"
 }
 
 variable "r_create_asp" {
@@ -54,13 +54,13 @@ variable "r_existing_asp_rg" {
 
 # To generate URLs dynamically and configure them in app settings. Do not change anything below this line.
 
-locals {
-  wizard_url    = "https://${var.r_prefix}wizard${var.r_env}.azurewebsites.net"
-  reporting_url = "https://${var.r_prefix}reporting${var.r_env}.azurewebsites.net"
-  webapp_url    = "https://${var.r_prefix}webapp${var.r_env}.azurewebsites.net"
-  identity_url  = "https://${var.r_prefix}identity${var.r_env}.azurewebsites.net"
-  api_url       = "https://${var.r_prefix}api${var.r_env}.azurewebsites.net"
-  v2_url        = "https://${var.r_prefix}v2${var.r_env}.azurewebsites.net"
-  cors          = join(", ", [local.v2_url, local.webapp_url, local.api_url, local.identity_url, local.wizard_url])
+#locals #{
+ # wizard_url    = "https://${var.r_prefix}wizard${var.r_env}.azurewebsites.net"
+ # reporting_url = "https://${var.r_prefix}reporting${var.r_env}.azurewebsites.net"
+  #webapp_url    = "https://${var.r_prefix}webapp${var.r_env}.azurewebsites.net"
+  #identity_url  = "https://${var.r_prefix}identity${var.r_env}.azurewebsites.net"
+  #api_url       = "https://${var.r_prefix}api${var.r_env}.azurewebsites.net"
+  #v2_url        = "https://${var.r_prefix}v2${var.r_env}.azurewebsites.net"
+  #cors          = join(", ", [local.v2_url, local.webapp_url, local.api_url, local.identity_url, local.wizard_url])
 
-}
+#}
