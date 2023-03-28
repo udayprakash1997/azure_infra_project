@@ -1,10 +1,10 @@
 module "webapp" {
   source = "../Module/"
 
-  rg_name          = "foodalert12"
+  rg_name          = "ashok1234234ashok"
   rg_location        = "East Us"
-  asp_name     =  "appserviceplanfoodalerttest1"
-  as_name             = "appservicefoodalerttest1"
+  asp_name     =  "appserviceplanfoodalerttest1123"
+  as_name             = "appservicefoodalerttest11233"
   #env                 = var.r_env
   #asp_name            = "${var.r_prefix}-asp1-${var.r_env}-${random_integer.ri.result}"
   #tier                = "Standard"
