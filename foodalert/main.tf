@@ -23,8 +23,8 @@ module "webapp" {
   as_name             = "appservicefoodalerttest11233"
   #env                 = var.r_env
   #asp_name            = "${var.r_prefix}-asp1-${var.r_env}-${random_integer.ri.result}"
-  #tier                = "Standard"
-  #size                = "S1"
+  tier                = "Basci"
+  size                = "B1"
   #webapplist          = ["identity", "webapp"]
   #resource_group_name = azurerm_resource_group.rg.name
   #location            = azurerm_resource_group.rg.location
@@ -48,8 +48,8 @@ module "webapp" {
   as_name             = "appservicefoodalerttest1123344"
   #env                 = var.r_env
   #asp_name            = "${var.r_prefix}-asp1-${var.r_env}-${random_integer.ri.result}"
-  #tier                = "Standard"
-  #size                = "S1"
+  tier                = "Basci"
+  size                = "B1"
   #webapplist          = ["identity", "webapp"]
   #resource_group_name = azurerm_resource_group.rg.name
   #location            = azurerm_resource_group.rg.location
