@@ -1,9 +1,25 @@
+resource "azurerm_resource_group" "rgname" {
+  rg_name     = "ashokkumarstorage1456"
+  rg_location = "East Us"
+}
+resource "azurerm_app_service_plan" "aspname" {
+  asp_name                = "ashokkumarappserviceplan4567"
+  location            = azurerm_resource_group.rgname.location
+  resource_group_name = azurerm_resource_group.rgname.name
+  kind                = "Linux"
+  reserved            = true
+
+  sku {
+    tier = "Basic"
+    size = "B1"
+  }
+}
 module "webapp" {
   source = "../Module/"
 
-  rg_name          = "ashok1234234ashok"
-  rg_location        = "East Us"
-  asp_name     =  "appserviceplanfoodalerttest1123"
+  rg_name          = azurerm_resource_group.rgname.name
+  rg_location        = azurerm_resource_group.rgname.location
+  asp_name     =  azurerm_app_service_plan.aspname.id
   as_name             = "appservicefoodalerttest11233"
   #env                 = var.r_env
   #asp_name            = "${var.r_prefix}-asp1-${var.r_env}-${random_integer.ri.result}"
