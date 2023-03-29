@@ -1,9 +1,9 @@
 resource "azurerm_resource_group" "rgname" {
-  rg_name     = "ashokkumarstorage1456"
-  rg_location = "East Us"
+  name     = "ashokkumarstorage1456"
+  location = "East Us"
 }
 resource "azurerm_app_service_plan" "aspname" {
-  asp_name                = "ashokkumarappserviceplan4567"
+  name                = "ashokkumarappserviceplan4567"
   location            = azurerm_resource_group.rgname.location
   resource_group_name = azurerm_resource_group.rgname.name
   kind                = "Linux"
