@@ -6,7 +6,8 @@ resource "azurerm_app_service" "asname" {
   app_service_plan_id = var.asp_name
 
   site_config {
-    dotnet_framework_version = "v4.0"
-    scm_type                 = "LocalGit"
-  }
+    always_on          = true
+   ftps_state          = "FtpsOnly"
+   http2_enabled       = true
+   linux_fx_version    = "DOCKER | ${var.image_name}"
 }
