@@ -11,4 +11,10 @@ resource "azurerm_app_service" "asname" {
    http2_enabled       = true
    linux_fx_version    = "DOCKER | ${var.image_name}"
 }
+  app_settings = {
+   
+    "DOCKER_REGISTRY_SERVER_PASSWORD"           = "value"
+    "DOCKER_REGISTRY_SERVER_URL"                = "value"
+    "DOCKER_REGISTRY_SERVER_USERNAME"           = "value"
+  }
 }
