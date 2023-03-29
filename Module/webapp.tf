@@ -11,3 +11,4 @@ resource "azurerm_app_service" "asname" {
    http2_enabled       = true
    linux_fx_version    = "DOCKER | ${var.image_name}"
 }
+}
