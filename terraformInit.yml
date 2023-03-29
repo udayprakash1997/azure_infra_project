@@ -52,6 +52,14 @@ steps:
     #commandOptions: '-var-file="terraform.tfvars" -input=false -out deployment.tfplan'
     allowTelemetryCollection: false
     displayName: 'Terraform Apply'
+- task: TerraformCLI@0
+  inputs:
+    command: 'destroy'
+    workingDirectory: '${{parameters.workingDir}}'
+    environmentServiceName: '${{parameters.subscription}}'
+    #commandOptions: '-var-file="terraform.tfvars" -input=false -out deployment.tfplan'
+    allowTelemetryCollection: false
+    displayName: 'Terraform Apply'
 
 #- task: ArchiveFiles@2
  # inputs:
