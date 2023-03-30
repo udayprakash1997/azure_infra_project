@@ -1,6 +1,9 @@
 resource "azurerm_resource_group" "rgname" {
   name     = "marolix-uday-rg"
   location = "East Us"
+  tags ={
+  ENV = "Dev"
+  }
 }
 resource "azurerm_app_service_plan" "aspname" {
   name                = "marolix-uday-appservice-plan"
