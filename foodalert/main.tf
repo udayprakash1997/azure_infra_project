@@ -1,9 +1,9 @@
 resource "azurerm_resource_group" "rgname" {
-  name     = "ashokkumarstorage1456"
+  name     = "marolix-uday-rg"
   location = "East Us"
 }
 resource "azurerm_app_service_plan" "aspname" {
-  name                = "ashokkumarappserviceplan4567"
+  name                = "marolix-uday-appservice-plan"
   location            = azurerm_resource_group.rgname.location
   resource_group_name = azurerm_resource_group.rgname.name
   kind                = "Linux"
@@ -15,7 +15,7 @@ resource "azurerm_app_service_plan" "aspname" {
   }
 }
 resource "azurerm_app_service_plan" "aspname1" {
-  name                = "ashokkumarappserviceplan456789"
+  name                = "marolix-uday-appserviceplan1"
   location            = azurerm_resource_group.rgname.location
   resource_group_name = azurerm_resource_group.rgname.name
   kind                = "Linux"
