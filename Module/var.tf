@@ -74,10 +74,6 @@ variable "JIRA_ID" {
   type = string
   default=" "
 }
-variable "JIRA_ID" {
-  type = string
-  default="No"
-}
 variable "Auto_scale" {
   type = string
   default="No"
