@@ -25,7 +25,7 @@ variables:
   
 
 # Go through this variable group to change the behaviour of terraform modules
-- group: 'terraformControl - HSDev'
+#- group: 'terraformControl - HSDev'
 
 
 stages:
@@ -38,7 +38,7 @@ stages:
     - template: 'terraformInit.yml'
       parameters:
         subscription: $(serviceconnection)
-        workingDir: '$(System.DefaultWorkingDirectory)'
+        workingDir: '$(System.DefaultWorkingDirectory)/foodalert'
         backendType: azurerm
         backendAzureRmResourceGroupName: '$(TerraformBackend.ResourceGroup)'
         backendAzureRmStorageAccountName: '$(TerraformBackend.StorageAccount)'
