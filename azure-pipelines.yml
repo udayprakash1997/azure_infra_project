@@ -35,7 +35,7 @@ stages:
   - job:
     displayName: Init
     steps:
-    - template: 'terraformInit.yml'
+    - template: 'terraforminit.yml'
       parameters:
         subscription: $(serviceconnection)
         workingDir: '$(System.DefaultWorkingDirectory)/foodalert'
