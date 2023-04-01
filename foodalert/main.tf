@@ -29,7 +29,7 @@ locals {
 # Create three apps all in linux and containers based.
 
 module "app" {
-  source          = "./modules/linuxapp"
+  source          = "./foodalert/modules/linuxapp"
   create_asp      = var.r_create_asp_linux
   existing_asp    = var.r_existing_aspl
   existing_asp_rg = var.r_existing_aspl_rg
