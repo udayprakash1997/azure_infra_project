@@ -40,7 +40,7 @@ module "app" {
   size            = "B1"
   location        = "north europe"
   # webapplist              = ["riskassessmentsapp", "graphapi", "safetyfirstapi"]
-  webapplist          = var.r_app_names
+ # webapplist          = var.r_app_names
   resource_group_name = local.l_resource_group_name
   #scm_ip_restriction  = ["31.121.101.144/28", "31.121.101.128/29", "202.89.106.0/23"]
   app_settings = {
