@@ -36,14 +36,14 @@ module "app" {
   prefix          = var.r_prefix
   env             = var.r_env
   asp_name        = "${var.r_prefix}-asplinux-${var.r_env}-${random_integer.ri.result}"
-  image_name      = "hsdtransformdev.azurecr.io/hsd-risk-assessments-app:latest"
+  image_name      = "foodalert"
   tier            = "Basic"
   size            = "B1"
   location        = "north europe"
   # webapplist              = ["riskassessmentsapp", "graphapi", "safetyfirstapi"]
   webapplist          = var.r_app_names
   resource_group_name = local.l_resource_group_name
-  scm_ip_restriction  = ["31.121.101.144/28", "31.121.101.128/29", "202.89.106.0/23"]
+  #scm_ip_restriction  = ["31.121.101.144/28", "31.121.101.128/29", "202.89.106.0/23"]
   app_settings = {
     PORT = "8000"
   }
