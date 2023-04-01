@@ -34,15 +34,6 @@ steps:
     backendAzureRmKey: '${{parameters.backendAzureRmKey}}'
     allowTelemetryCollection: false
     displayName: 'Terraform Init'
-
-- task: TerraformCLI@0
-  inputs:
-    command: 'plan'
-    workingDirectory: '${{parameters.workingDir}}'
-    environmentServiceName: '${{parameters.subscription}}'
-    #commandOptions: '-var-file="terraform.tfvars" -input=false -out deployment.tfplan'
-    allowTelemetryCollection: false
-    displayName: 'Terraform Plan'
     
 - task: TerraformCLI@0
   inputs:
