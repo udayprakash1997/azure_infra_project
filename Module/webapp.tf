@@ -8,7 +8,7 @@ resource "azurerm_app_service" "asname" {
     always_on          = true
    ftps_state          = "FtpsOnly"
    http2_enabled       = true
-   linux_fx_version    = "DOCKER | ${var.image_name}"
+   linux_fx_version    = "DOCKER|${var.image_name}"
 }
   #app_settings = #{
    
