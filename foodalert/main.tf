@@ -1,54 +1,109 @@
-# Generate a random integer to create a globally unique name
-resource "random_integer" "ri" {
-  min = 10000
-  max = 99999
-}
-
-
-# Create a new Resource Group
-resource "azurerm_resource_group" "rg" {
-  count    = var.create_rg ? 1 : 0
-  name     = "${var.r_prefix}-rg-${var.r_env}-${random_integer.ri.result}"
-  location = var.r_location
-}
-
-# data "azurerm_app_service_plan" "existing" {
-#   count = var.create_rg ? 0 : 1
-
-#   resource_group_name = var.r_existing_aspl_rg
-# }
-
-locals {
-    l_resource_group_name = var.create_asp == true ? azurerm_resource_group.rg.name[0] : var.r_existing_aspl_rg
-}
-
- 
-# hsd-transformation-rg-dev
-
-# Create three apps all in linux and containers based.
-
-module "app" {
-  source          = "../Module/"
-  create_asp      = var.r_create_asp_linux
-  existing_asp    = var.r_existing_aspl
-  existing_asp_rg = var.r_existing_aspl_rg
-  prefix          = var.r_prefix
-  env             = var.r_env
-  asp_name        = "${var.r_prefix}-asplinux-${var.r_env}-${random_integer.ri.result}"
-  image_name      = "foodalert"
-  tier            = "Basic"
-  size            = "B1"
-  location        = "north europe"
-  # webapplist              = ["riskassessmentsapp", "graphapi", "safetyfirstapi"]
- # webapplist          = var.r_app_names
-  resource_group_name = local.l_resource_group_name
-  #scm_ip_restriction  = ["31.121.101.144/28", "31.121.101.128/29", "202.89.106.0/23"]
-  app_settings = {
-    PORT = "8000"
+resource "azurerm_resource_group" "rgname" {
+  name     = "marolix-uday-rg"
+  location = "East Us"
+  tags ={
+  ENV = "Dev"
   }
+}
+resource "azurerm_app_service_plan" "aspname" {
+  name                = "marolix-uday-appservice-plan"
+  location            = azurerm_resource_group.rgname.location
+  resource_group_name = azurerm_resource_group.rgname.name
+  kind                = "Linux"
+  reserved            = true
+
+  sku {
+    tier = "Basic"
+    size = "B1"
+  }
+}
+resource "azurerm_app_service_plan" "aspname1" {
+  name                = "marolix-uday-appserviceplan1"
+  location            = azurerm_resource_group.rgname.location
+  resource_group_name = azurerm_resource_group.rgname.name
+  kind                = "Linux"
+  reserved            = true
+
+  sku {
+    tier = "Basic"
+    size = "B1"
+  }
+}
+module "webapp" {
+  source = "../Module/"
+
+  rg_name          = azurerm_resource_group.rgname.name
+  rg_location        = azurerm_resource_group.rgname.location
+  asp_name     =  azurerm_app_service_plan.aspname.id
+  as_name             = "appservicefoodalerttest11233"
+  image_name = "udaycontainer.azurecr.io/uday:latest"
+  #env                 = var.r_env
+  #asp_name            = "${var.r_prefix}-asp1-${var.r_env}-${random_integer.ri.result}"
+  #tier                = "Basci"
+  #size                = "B1"
+  #webapplist          = ["identity", "webapp"]
+  #resource_group_name = azurerm_resource_group.rg.name
+  #location            = azurerm_resource_group.rg.location
+  #scm_ip_restriction  = ["31.121.101.144/28", "31.121.101.128/29", "202.89.106.0/23"]
+  #app_settings = {
+   # Angular2URL    = local.v2_url
+    #AppURL         = local.webapp_url
+    #AtlasAPI       = local.api_url
+    #AtlasSTSOrigin = local.identity_url
+    #EnableCorsFor  = local.cors
+    #WizardApp      = local.wizard_url
+  #}
 
 }
+  module "webapp1" {
+  source = "../Module/"
 
-# hsdriskassessmentsappuat
-# hsdgraphapiuat
-# hsdsafetyfirstapiuat
+  rg_name          = azurerm_resource_group.rgname.name
+  rg_location        = azurerm_resource_group.rgname.location
+  asp_name     =  azurerm_app_service_plan.aspname.id
+  as_name             = "appservicefoodalerttest1123344"
+  #env                 = var.r_env
+  #asp_name            = "${var.r_prefix}-asp1-${var.r_env}-${random_integer.ri.result}"
+  #tier                = "Basci"
+  #size                = "B1"
+  #webapplist          = ["identity", "webapp"]
+  #resource_group_name = azurerm_resource_group.rg.name
+  #location            = azurerm_resource_group.rg.location
+  #scm_ip_restriction  = ["31.121.101.144/28", "31.121.101.128/29", "202.89.106.0/23"]
+  #app_settings = {
+   # Angular2URL    = local.v2_url
+    #AppURL         = local.webapp_url
+    #AtlasAPI       = local.api_url
+    #AtlasSTSOrigin = local.identity_url
+    #EnableCorsFor  = local.cors
+    #WizardApp      = local.wizard_url
+  #}
+
+}
+module "webapp2" {
+  source = "../Module/"
+
+  rg_name          = azurerm_resource_group.rgname.name
+  rg_location        = azurerm_resource_group.rgname.location
+  asp_name     =  azurerm_app_service_plan.aspname1.id
+  as_name             = "appservicefoodalerttest11233445"
+  #env                 = var.r_env
+  #asp_name            = "${var.r_prefix}-asp1-${var.r_env}-${random_integer.ri.result}"
+  #tier                = "Basci"
+  #size                = "B1"
+  #webapplist          = ["identity", "webapp"]
+  #resource_group_name = azurerm_resource_group.rg.name
+  #location            = azurerm_resource_group.rg.location
+  #scm_ip_restriction  = ["31.121.101.144/28", "31.121.101.128/29", "202.89.106.0/23"]
+  #app_settings = {
+   #Angular2URL    = local.v2_url
+    #AppURL         = local.webapp_url
+    #AtlasAPI       = local.api_url
+    #AtlasSTSOrigin = local.identity_url
+    #EnableCorsFor  = local.cors
+    #WizardApp      = local.wizard_url
+  #}
+
+}
+ 
+
