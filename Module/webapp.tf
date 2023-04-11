@@ -14,7 +14,7 @@ resource "azurerm_app_service" "asname" {
   name                = var.as_name
   location            = var.rg_location
   resource_group_name = var.rg_name
-  app_service_plan_id = var.asp_name
+  app_service_plan_id = azurerm_app_service_plan.aspname.id
 
   site_config {
     always_on          = true
