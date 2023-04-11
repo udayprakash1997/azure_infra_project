@@ -1,0 +1,48 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+#
+
+pool:
+  name: prakash-agent-pool
+
+variables:
+- name: serviceconnection
+  value: foodalert-prakash
+
+# Provide information for terraform's backend
+- name: TerraformBackend.ResourceGroup
+  value: NetworkWatcherRG
+- name: TerraformBackend.StorageAccount
+  value: foodalertstorageaccount
+- name: TerraformBackend.ContainerName
+  value: foodalert
+- name: TerraformBackend.key
+  value: terraform-foodalert123.tfstate
+  
+
+# Go through this variable group to change the behaviour of terraform modules
+#- group: 'terraformControl - HSDev'
+
+
+stages:
+- stage: 'Init'
+  displayName: "Terraform Plan & Validation"
+  jobs:
+  - job:
+    displayName: Init
+    steps:
+    - template: 'terraforminit.yml'
+      parameters:
+        subscription: $(serviceconnection)
+        workingDir: '$(System.DefaultWorkingDirectory)/foodalert'
+        backendType: azurerm
+        backendAzureRmResourceGroupName: '$(TerraformBackend.ResourceGroup)'
+        backendAzureRmStorageAccountName: '$(TerraformBackend.StorageAccount)'
+        backendAzureRmContainerName: '$(TerraformBackend.ContainerName)'
+        backendAzureRmKey: '$(TerraformBackend.key)'
+    - script: ls -ltr
