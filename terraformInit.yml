@@ -46,7 +46,7 @@ steps:
     
 - task: TerraformCLI@0
   inputs:
-    command: 'destroy'
+    command: 'apply'
     workingDirectory: '${{parameters.workingDir}}'
     environmentServiceName: '${{parameters.subscription}}'
     #commandOptions: '-var-file="terraform.tfvars" -input=false -out deployment.tfplan'
