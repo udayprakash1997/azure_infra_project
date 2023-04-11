@@ -24,7 +24,7 @@ steps:
 
 - task: TerraformCLI@0
   inputs:
-    command: 'destroy'
+    command: 'init'
     workingDirectory: '${{parameters.workingDir}}'
     backendType: '${{parameters.backendType}}'
     backendServiceArm: '${{parameters.subscription}}'
@@ -37,12 +37,22 @@ steps:
     
 - task: TerraformCLI@0
   inputs:
-    command: 'destroy'
+    command: 'plan'
     workingDirectory: '${{parameters.workingDir}}'
     environmentServiceName: '${{parameters.subscription}}'
     #commandOptions: '-var-file="terraform.tfvars" -input=false -out deployment.tfplan'
     allowTelemetryCollection: false
     displayName: 'Terraform Apply'
+    
+- task: TerraformCLI@0
+  inputs:
+    command: 'apply'
+    workingDirectory: '${{parameters.workingDir}}'
+    environmentServiceName: '${{parameters.subscription}}'
+    #commandOptions: '-var-file="terraform.tfvars" -input=false -out deployment.tfplan'
+    allowTelemetryCollection: false
+    displayName: 'Terraform Apply'
+    
     
 #- task: ArchiveFiles@2
  # inputs:
