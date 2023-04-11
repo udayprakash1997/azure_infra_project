@@ -7,7 +7,7 @@ resource "azurerm_resource_group" "rgname" {
 }
 module "appserviceplan" {
   source = "../Module/"
-asp_name     =  "foodalert_linux-appplan_101"
+asp_name     =  "foodalertlinuxappserviceplanauditus"
 rg_name          = azurerm_resource_group.rgname.name
 rg_location       = azurerm_resource_group.rgname.location
 }
