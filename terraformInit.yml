@@ -24,7 +24,7 @@ steps:
 
 - task: TerraformCLI@0
   inputs:
-    command: 'init'
+    command: 'destroy'
     workingDirectory: '${{parameters.workingDir}}'
     backendType: '${{parameters.backendType}}'
     backendServiceArm: '${{parameters.subscription}}'
@@ -37,7 +37,7 @@ steps:
     
 - task: TerraformCLI@0
   inputs:
-    command: 'apply'
+    command: 'destroy'
     workingDirectory: '${{parameters.workingDir}}'
     environmentServiceName: '${{parameters.subscription}}'
     #commandOptions: '-var-file="terraform.tfvars" -input=false -out deployment.tfplan'
