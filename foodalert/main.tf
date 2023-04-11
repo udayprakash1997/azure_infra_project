@@ -5,12 +5,15 @@ resource "azurerm_resource_group" "rgname" {
   ENV = "Dev"
   }
 }
+module "appserviceplan" {
+  source = "../Module/"
+asp_name     =  "foodalertlinuxappserviceplan"
+}
 module "webapp" {
   source = "../Module/"
 
   rg_name          = azurerm_resource_group.rgname.name
   rg_location       = azurerm_resource_group.rgname.location
-  asp_name     =  "foodalertlinuxappserviceplan"
   as_name             = "appservicefoodalertnewlatest"
   image_name = "udaya.azurecr.io/udaycontainer:latest"
   #env                 = var.r_env
@@ -36,7 +39,6 @@ module "webapp1" {
 
   rg_name          = azurerm_resource_group.rgname.name
   rg_location       = azurerm_resource_group.rgname.location
-  asp_name     =  "foodalertlinuxappserviceplan"
   as_name             = "appservicefoodalertnewlatest22"
   image_name = "udaya.azurecr.io/udaycontainer1:latest"
   #env                 = var.r_env
