@@ -21,7 +21,7 @@ variables:
 - name: TerraformBackend.ContainerName
   value: foodalert
 - name: TerraformBackend.key
-  value: terraform-foodalert.tfstate
+  value: terraform-foodalert123.tfstate
   
 
 # Go through this variable group to change the behaviour of terraform modules
