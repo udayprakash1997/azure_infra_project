@@ -12,7 +12,7 @@ module "webapp" {
   rg_location       = azurerm_resource_group.rgname.location
   asp_name     =  "foodalertlinuxappserviceplan"
   as_name             = "appservicefoodalertnewlatest"
-  image_name = "udaycontainer.azurecr.io/udaycontainer:dev-v20230405.11"
+  image_name = "udaya.azurecr.io/udaycontainer:latest"
   #env                 = var.r_env
   #asp_name            = "${var.r_prefix}-asp1-${var.r_env}-${random_integer.ri.result}"
   #tier                = "Basci"
