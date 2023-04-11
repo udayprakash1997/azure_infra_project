@@ -16,7 +16,7 @@ module "webapp" {
 
   rg_name          = azurerm_resource_group.rgname.name
   rg_location       = azurerm_resource_group.rgname.location
-  as_name             = "appservicefoodalertnewlatest"
+  as_name             = "appservicefoodalertnewlatest123443455"
   image_name = "udaya.azurecr.io/udaycontainer:latest"
   #env                 = var.r_env
   #asp_name            = "${var.r_prefix}-asp1-${var.r_env}-${random_integer.ri.result}"
@@ -41,7 +41,7 @@ module "webapp1" {
 
   rg_name          = azurerm_resource_group.rgname.name
   rg_location       = azurerm_resource_group.rgname.location
-  as_name             = "appservicefoodalertnewlatest22"
+  as_name             = "appservicefoodalertnewlatest22123456tre"
   image_name = "udaya.azurecr.io/udaycontainer1:latest"
   #env                 = var.r_env
   #asp_name            = "${var.r_prefix}-asp1-${var.r_env}-${random_integer.ri.result}"
