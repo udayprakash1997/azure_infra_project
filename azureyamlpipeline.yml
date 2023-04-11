@@ -17,11 +17,11 @@ variables:
 - name: TerraformBackend.ResourceGroup
   value: NetworkWatcherRG
 - name: TerraformBackend.StorageAccount
-  value: foodalertstorageaccount
+  value: ashok12376
 - name: TerraformBackend.ContainerName
-  value: foodalert
+  value: ashok
 - name: TerraformBackend.key
-  value: terraform-foodalertlates10001.tfstate
+  value: terraform-foodalertla.tfstate
 - name: WorkingDir
   value: 'foodalert'
 stages:
